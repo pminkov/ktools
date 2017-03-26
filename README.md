@@ -2,7 +2,7 @@
 
 #### ksh - ssh to a pod.
 
-It's annoying to copy paste pod names when you want to ssh to a pod. Just use ksh.
+It's annoying to copy and paste pod names when you want to ssh to a pod. You can use ksh instead.
 
 ```bash
 $ python ./ksh.py jup
@@ -11,6 +11,6 @@ Multiple pods found:
 1) jupyter-petko-1
 Choice: 0
 SSH-ing to jupyter-john-2
-root@jupyter-ivan-2:/# uname -r
+root@jupyter-john-2:/# uname -r
 4.4.21+
 ```
