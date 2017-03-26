@@ -5,7 +5,7 @@
 It's annoying to copy and paste pod names when you want to ssh to a pod. You can use ksh instead.
 
 ```bash
-$ python ./ksh.py jup
+$ ./ksh jup
 Multiple pods found:
 0) jupyter-john-2
 1) jupyter-petko-1
