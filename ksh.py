@@ -1,3 +1,4 @@
+#!python
 import shlex
 import subprocess
 import sys
