@@ -10,9 +10,10 @@ config.load_kube_config()
 
 commands = ['ssh', 'podmaps']
 
-def print_commands():
-  print 'kubeutils is a set of Kubernetes utility commands.'
-  print
+def print_commands(with_intro=True):
+  if with_intro:
+    print 'kubeutils is a set of Kubernetes utility commands.'
+    print
   print 'Commands:'
   print '  %-12s %s' % ('ssh', 'SSH to a pod')
   print '  %-12s %s' % ('podmaps', 'Print mapping from pod name to node name')
@@ -68,8 +69,9 @@ if __name__ == '__main__':
     name = sys.argv[1]
 
     if not name in commands:
-      print 'Invalid command'
-      print 'Valid commands: ', commands.join(' | ')
+      print 'Invalid command: %s.' % name
+      print
+      print_commands(with_intro=False)
 
     if name == 'ssh':
       command_ssh()
