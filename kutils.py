@@ -51,7 +51,8 @@ def command_ssh():
     ssh_to(candidates[index]);
 
 def command_podmaps():
-  command = "kubectl get pods -o jsonpath='{range .items[*]}{.metadata.name} {.spec.nodeName}|{end}'"
+  extra_params = ' '.join(sys.argv[2:])
+  command = "kubectl get pods %s -o jsonpath='{range .items[*]}{.metadata.name} {.spec.nodeName}|{end}'" % extra_params
   output = subprocess.check_output(shlex.split(command))
   pods = output.split('|')[:-1]
   for pod in pods:
