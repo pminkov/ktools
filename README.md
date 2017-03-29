@@ -1,6 +1,6 @@
 # Kubernetes Utils
 
-Run as `kutils [command] [arguments]
+Run as `kutils [command] [arguments]`.
 
 #### ssh - ssh to a pod.
 
@@ -22,6 +22,6 @@ root@jupyter-john-2:/# uname -r
 ```bash
 $ ./kutils podmaps
 hub-1565290413-qmtfc   : gke-jcluster-default-pool-9cc4e660-rx9p
-jupyter-ivan-2         : gke-jcluster-default-pool-9cc4e660-rx9p
-jupyter-nikola-2       : gke-jcluster-default-pool-9cc4e660-rx9p
+jupyter-john-2         : gke-jcluster-default-pool-9cc4e660-rx9p
+jupyter-petko-2        : gke-jcluster-default-pool-9cc4e660-rx9p
 ```
