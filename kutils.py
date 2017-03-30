@@ -9,11 +9,9 @@ from kubernetes import client, config
 
 config.load_kube_config()
 
-commands = ['ssh', 'podmaps', 'instance-group', 'node-count']
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 global argv
-
 
 class ArgvConsumer:
   def __init__(self):
@@ -115,23 +113,22 @@ if __name__ == '__main__':
   name = None
   argv = ArgvConsumer()
 
+  command_handlers = {
+    'ssh': command_ssh,
+    'podmaps': command_podmaps,
+    'instance-group': command_instance_group,
+    'node-count': command_node_count
+  }
+
   if argv.done():
     print_commands()
   else:
     name = argv.get_value("command")
 
-    if not name in commands:
+    if not name in command_handlers.keys():
       print 'Invalid command: %s.' % name
       print
       print_commands(with_intro=False)
 
-    if name == 'ssh':
-      command_ssh()
-    elif name == 'podmaps':
-      command_podmaps()
-    elif name == 'instance-group':
-      command_instance_group()
-    elif name == 'node-count':
-      command_node_count()
-    
-
+    handler = command_handlers[name]
+    handler()
