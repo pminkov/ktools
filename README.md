@@ -2,6 +2,18 @@
 
 Run as `kutils [command] [arguments]`.
 
+```bash
+$ kutils
+kubeutils is a set of Kubernetes utility commands.
+
+Commands:
+  ssh              SSH to a pod
+  podmaps          Print mapping from pod name to node name
+
+Kubernetes on Google Container Engine (GKE) commands:
+  instance-group   Get instance group name for a cluster
+```
+
 #### ssh - ssh to a pod.
 
 It's annoying to copy and paste pod names when you want to ssh to a pod. You can use ksh instead.
