@@ -12,6 +12,7 @@ Commands:
 
 Kubernetes on Google Container Engine (GKE) commands:
   instance-group   Get instance group name for a cluster
+  node-count       Get number of nodes in a cluster
 ```
 
 #### ssh - ssh to a pod.

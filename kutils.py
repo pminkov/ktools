@@ -9,9 +9,11 @@ from kubernetes import client, config
 
 config.load_kube_config()
 
-commands = ['ssh', 'podmaps', 'instance-group']
+commands = ['ssh', 'podmaps', 'instance-group', 'node-count']
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 global argv
+
 
 class ArgvConsumer:
   def __init__(self):
@@ -29,6 +31,11 @@ class ArgvConsumer:
     self.position += 1
     return ret
 
+def get_script_path(script_name):
+  script_path = os.path.join(dir_path, "scripts/%s" % script_name)
+  return script_path
+  
+
 def print_commands(with_intro=True):
   if with_intro:
     print 'kubeutils is a set of Kubernetes utility commands.'
@@ -40,6 +47,7 @@ def print_commands(with_intro=True):
   print 'Kubernetes on Google Container Engine (GKE) commands:'
   # print '  %-16s %s' % ('resize-wait', 'Resizes a cluster and waits until resize is done')
   print '  %-16s %s' % ('instance-group', 'Get instance group name for a cluster')
+  print '  %-16s %s' % ('node-count', 'Get number of nodes in a cluster')
   print
 
 def ssh_to(pod_name):
@@ -87,13 +95,20 @@ def command_podmaps():
 
 
 def command_instance_group():
-  dir_path = os.path.dirname(os.path.realpath(__file__))
-  script_path = os.path.join(dir_path, "scripts/instance-group.sh")
+  script_path = get_script_path("instance-group.sh")
 
   cluster = argv.get_value("cluster")
 
-  ret = subprocess.check_output(shlex.split(script_path + " " + sys.argv[2]))
-  print ret
+  ret = subprocess.check_output(shlex.split(script_path + " " + cluster))
+  print ret,
+
+def command_node_count():
+  script_path = get_script_path("node-count.sh")
+
+  cluster = argv.get_value("cluster")
+
+  ret = subprocess.check_output(shlex.split(script_path + " " + cluster))
+  print ret,
 
 
 if __name__ == '__main__':
@@ -116,5 +131,7 @@ if __name__ == '__main__':
       command_podmaps()
     elif name == 'instance-group':
       command_instance_group()
+    elif name == 'node-count':
+      command_node_count()
     
 
