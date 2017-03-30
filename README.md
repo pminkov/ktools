@@ -2,7 +2,7 @@
 
 Run as `kutils [command] [arguments]`.
 
-```bash
+```
 $ kutils
 kubeutils is a set of Kubernetes utility commands.
 
