@@ -6,12 +6,6 @@ $ pip install kubeutils
 ```
 
 ## Usage
-To run:
-```
-$ kubeutils
-```
-
-I recommend setting up a more convenient alias (for example - "ku").
 
 Run as `kubeutils [command] [arguments]`.
 
