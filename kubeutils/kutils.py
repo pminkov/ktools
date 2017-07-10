@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import os
 import shlex
@@ -10,8 +10,6 @@ from kubernetes import client, config
 config.load_kube_config()
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-
-global argv
 
 class ArgvConsumer:
   def __init__(self):
@@ -109,7 +107,8 @@ def command_node_count():
   print ret,
 
 
-if __name__ == '__main__':
+def main():
+  global argv
   name = None
   argv = ArgvConsumer()
 
