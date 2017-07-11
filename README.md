@@ -24,7 +24,7 @@ Kubernetes on Google Container Engine (GKE) commands:
 
 #### ssh - ssh to a pod.
 
-It's annoying to copy and paste pod names when you want to ssh to a pod. You can use ksh instead.
+It's annoying to copy and paste pod names when you want to ssh to a pod. You can use `kubeutils ssh` instead.
 
 ```bash
 $ kubeutils ssh jup
